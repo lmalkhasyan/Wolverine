@@ -14,16 +14,17 @@ int main(int argc, char **argv)
 	std::string buffer;
 	std::string source;
 	std::ifstream src_file(argv[1]);
+
 	if (!src_file.is_open())
 	{
 		std::cout << "Can't Open File: " << argv[1] << std::endl;  
 	}	
 	while(!src_file.eof())
 	{
-		std::getline(src_file, buffer, '\t');
+		std::getline(src_file, buffer);
 		source += buffer;
 	}
-	//std::cout << source << std::endl; // no need
+
 	std::ofstream dst_file("dst_file.txt");
 	if (!dst_file.is_open())
 	{
@@ -32,12 +33,12 @@ int main(int argc, char **argv)
 	}
 	
 	char *token = nullptr;
-	token = strtok ((char *)source.c_str(), " ,\n");
+	token = strtok ((char *)source.c_str(), " ,\t");
 	while (token != NULL)
 	{
 		dst_file << token;
 		dst_file << '\n';
-		token = strtok (NULL, " ,.-");
+		token = strtok (NULL, " ,\t");
 	}
 	return 0;
 }

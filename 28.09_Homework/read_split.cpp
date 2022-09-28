@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 	}
 	
 	char *token = nullptr;
-	token = strtok ((char *)source.c_str(), " ,\t\v");
+	token = strtok ((char *)source.c_str(), " ,\n");
 	while (token != NULL)
 	{
 		dst_file << token;

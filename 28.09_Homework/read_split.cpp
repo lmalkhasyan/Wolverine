@@ -23,6 +23,7 @@ int main(int argc, char **argv)
 	{
 		std::getline(src_file, buffer);
 		source += buffer;
+		source += " ";
 	}
 
 	std::ofstream dst_file("dst_file.txt");
